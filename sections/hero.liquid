@@ -1,0 +1,58 @@
+
+<div class="hero-wrap">
+
+  <img src="{{ section.settings.hero }}" />
+
+  <div class="hero-copy">
+    {{ section.settings.hero-copy }}
+
+    <a class="hero-button" url="{{ section.settings.hero-button-url }}">{{ section.settings.hero-button-copy }}</a>
+
+  </div><!-- / .hero-copy -->
+
+</div><!-- / .hero-wrap -->
+
+
+
+{% schema %}
+
+  {
+    "name" : "Hero",
+    "class" : "hero",
+    "tag" : "section",
+    "settings" : [
+      {
+        "id" : "hero",
+        "type" : "image_picker",
+        "label" : "Add an Image",
+      },
+      {
+        "id" : "hero-copy",
+        "type" : "richtext",
+        "label" : "Marketing Copy",
+        "default" : "Lorem ipsum dolor sit amet."
+      },
+      {
+        "id" : "hero-button-copy",
+        "type" : "text",
+        "label" : "Button Copy",
+        "default" : "Learn More",
+      },
+      {
+        "id" : "hero-button-url",
+        "type" : "text",
+        "label" : "Button Copy",
+        "default" : "Learn More",
+      },
+    ],
+    "presets" : [
+      {
+        "name" : "Hero Section",
+        "category" : "image",
+      },
+    ],
+  }
+
+
+
+{% endschema %}
