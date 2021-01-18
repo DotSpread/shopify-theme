@@ -1,5 +1,5 @@
 {% paginate collection.products by 2 %}
-  <h1>{{ collection.title }}</h1>
+  <h1>{{ collection.title }} collection.list.liquid</h1>
   {% for product in collection.products %}
     <div>
       <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
@@ -14,4 +14,3 @@
   {% endfor %}
   {% if paginate.pages > 1 %}{{ paginate | default_pagination }}{% endif %}
 {% endpaginate %}
-
