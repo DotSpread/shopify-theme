@@ -13,18 +13,16 @@
 
     {%- assign title = product.title -%}
 
-    {%- assign compare_at_price = variant.compare_at_price -%}
-
-    {%- assign price = variant.price -%}
+    {%- assign price = product.price -%}
 
     {%- assign money_price = price | money -%}
 
-    {%- assign available = variant.available -%}
+    {%- assign available = product.available -%}
 
     <li class="grid-item">
 
       <a class="grid__item-image-link" href="{{ url }}">
-        <img src="{{ product.url | img_url: 360x }}" alt="{{ title }}" />
+        <img src="{{ product.featured_image | img_url: '360x' }}" alt="{{ title }}" />
       </a>
 
       <div class="grid__item-info">
@@ -33,9 +31,8 @@
 
       {% if available %}
         <p class="grid__item-regular-price">{{ money_price }}</p>
-        <p class="grid__item-compare-price">{{ compare_at_price | money }}</p>
       {% else %}
-        <p class="grid__item-sold-out">{{ money_price }}</p>
+        <p class="grid__item-sold-out">Sold out</p>
       {% endif %}
 
       </div><!-- / .grid__item-info -->
@@ -61,7 +58,7 @@
         "id" : "collection-heading",
         "type" : "text",
         "label" : "Collection Heading",
-        "Default" "Featured Collection"
+        "default" : "Featured Collection"
       },
       {
         "id" : "collection-product-count",

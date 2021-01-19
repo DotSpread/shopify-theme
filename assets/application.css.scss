@@ -4,7 +4,12 @@
 }
 
 body {
-  font-family: sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
+  color: #666666;
+}
+
+.shopify-section {
+  margin-bottom: 2rem;
 }
 
 // Featured Columns
@@ -21,4 +26,33 @@ body {
 .fc-column-image {
   width: 100%;
   height: auto;
+}
+
+// Featured Collections
+h2.collection-grid-heading {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+ul.grid.collection-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+li.grid-item {
+  width: 24%;
+  border: 1px solid #cacaca;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+}
+
+.grid__item-info {
+  padding: 1rem;
 }
