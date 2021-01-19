@@ -1,4 +1,4 @@
-// put your styles here
+
 * {
   box-sizing: border-box;
 }
@@ -9,12 +9,12 @@ body {
 }
 
 .shopify-section {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
-// Featured Columns
 .fc-wrap {
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
 }
 
@@ -28,7 +28,10 @@ body {
   height: auto;
 }
 
-// Featured Collections
+.fc-column-copy {
+  padding: 1rem;
+}
+
 h2.collection-grid-heading {
   text-align: center;
   text-transform: uppercase;
@@ -45,12 +48,12 @@ ul.grid.collection-grid {
 li.grid-item {
   width: 24%;
   border: 1px solid #cacaca;
+}
 
-  img {
-    width: 100%;
-    height: auto;
-  }
-
+li.grid-item img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .grid__item-info {
