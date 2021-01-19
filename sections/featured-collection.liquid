@@ -1,0 +1,88 @@
+
+{%- assign collection = collections[section.settings.collection] -%}
+
+<div class="featcol-wrap collection-grid-wrap">
+
+  <h2 class="collection-grid-heading">{{ section.settings.collection-heading }}</h2>
+
+  <ul class="grid collection-grid">
+
+  {% for product in collection.products limit: section.settings.collection-product-count %}
+
+    {%- assign url = product.url -%}
+
+    {%- assign title = product.title -%}
+
+    {%- assign compare_at_price = variant.compare_at_price -%}
+
+    {%- assign price = variant.price -%}
+
+    {%- assign money_price = price | money -%}
+
+    {%- assign available = variant.available -%}
+
+    <li class="grid-item">
+
+      <a class="grid__item-image-link" href="{{ url }}">
+        <img src="{{ product.url | img_url: 360x }}" alt="{{ title }}" />
+      </a>
+
+      <div class="grid__item-info">
+
+        <h3 class="grid__item-title"><a class="grid__item-text-link" href="{{ url }}">{{ title }}</a></h3>
+
+      {% if available %}
+        <p class="grid__item-regular-price">{{ money_price }}</p>
+        <p class="grid__item-compare-price">{{ compare_at_price | money }}</p>
+      {% else %}
+        <p class="grid__item-sold-out">{{ money_price }}</p>
+      {% endif %}
+
+      </div><!-- / .grid__item-info -->
+
+    </li><!-- / .grid-item -->
+
+  {% endfor %}
+
+  </ul><!-- / .collection-grid -->
+
+</div><!-- / .featcol-wrap -->
+
+
+
+{% schema %}
+
+  {
+    "name" : "Featured Collection",
+    "class" : "featcol",
+    "tag" : "section",
+    "settings" : [
+      {
+        "id" : "collection-heading",
+        "type" : "text",
+        "label" : "Collection Heading",
+        "Default" "Featured Collection"
+      },
+      {
+        "id" : "collection-product-count",
+        "type" : "range",
+        "label" : "Number of Products to Display",
+        "min" : 2,
+        "max" : 6,
+        "default" : 4
+      },
+      {
+        "id" : "collection",
+        "type" : "collection",
+        "label" : "Collection"
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Featured Collection",
+        "category" : "Collections"
+      }
+    ]
+  }
+
+{% endschema %}
