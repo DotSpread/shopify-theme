@@ -1,0 +1,99 @@
+
+<div class="fc-wrap" style="text-align: {{ section.settings.text-align }};">
+
+  {% for block in section.blocks %}
+
+  <div class="fc-column">
+
+    <img class="fc-column-image" src="{{ block.settings.column-image | img_url: '500x500' }}" />
+
+    <h2 class="fc-column-heading">{{ block.settings.column-heading }}</h2>
+
+    <div class="fc-column-copy">
+
+      {{ block.settings.column-copy }}
+
+    </div><!-- / .fc-column-copy -->
+
+  </div><!-- / .fc-column -->
+
+  {% endfor %}
+
+</div><!-- / .fc-wrap -->
+
+
+
+{% schema %}
+
+  {
+    "name" : "Featured Columns",
+    "class" : "featured-columns",
+    "tag" : "section",
+    "max_blocks" : 3,
+    "settings" : [
+      {
+        "id" : "text-align",
+        "type" : "select",
+        "label" : "Text-alignment",
+        "default" : "left",
+        "options" : [
+          {
+            "value" : "left",
+            "label" : "Left"
+          },
+          {
+            "value" : "right",
+            "label" : "Right"
+          },
+          {
+            "value" : "center",
+            "label" : "Center"
+          }
+        ]
+      }
+    ],
+    "blocks" : [
+      {
+        "type" : "text_block",
+        "name" : "Column",
+        "settings" [
+          {
+            "id" : "column-image",
+            "type" : "image_picker",
+            "label" : "Image"
+          },
+          {
+            "id" : "column-heading",
+            "type" : "text",
+            "label" : "Column Heading",
+            "default" : "Foo"
+          },
+          {
+            "id" : "column-copy",
+            "type" : "richtext",
+            "label" : "Column Copy",
+            "default" : "<p>Lorem ipsum dolor sit amet.</p>"
+          }
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Featured Columns",
+        "category" : "text",
+        "blocks" : [
+          {
+            "type" : "text_block"
+          },
+          {
+            "type" : "text_block"
+          },
+          {
+            "type" : "text_block"
+          }
+        ]
+      }
+    ]
+  }
+
+{% endschema %}
