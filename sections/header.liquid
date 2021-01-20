@@ -2,6 +2,22 @@
 
 <header class="global-header">
 
+  <div class="flex-grid">
+
+  {% if section.settings.logo != blank %}
+
+    {% assign width = section.settings.logo-width  %}
+
+    {% assign width_string = width | append: 'x' %}
+
+    {% assign img_url = section.settings.logo | img_url: width_string %}
+
+    <div class="header-logo" style="max-width: {{ width }}px;">
+      <img class="header-logo-image" src="{{ img_url }}" />
+    </div><!-- / .header-logo -->
+
+  {% endif %}
+
   <nav class="global-nav">
 
     <ul class="global-nav-list">
@@ -12,7 +28,9 @@
 
   {% if linklists[child_list_handle].links != blank %}
 
-    <li class="global-nav-has-children">
+    <li class="global-nav-item global-nav-has-children">
+
+      <a href="{{ link.url }}">{{ link.title | escape }}</a>
 
       <ul class="global-nav-sub">
 
@@ -57,8 +75,10 @@
     {{ 'register' | customer_register_link }}
 
   {% endif %}
-  
+
 {% endif %}
+
+  </div><!-- / .flex-grid -->
 
 </header><!-- / .global-header -->
 
@@ -98,7 +118,7 @@
       "label" : "Logo Width",
       "min" : 120,
       "max" : 250,
-      "steps" : 5,
+      "step" : 5,
       "unit" : "px",
       "default" : 160
     },

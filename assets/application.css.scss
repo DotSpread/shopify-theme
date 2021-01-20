@@ -8,6 +8,65 @@ body {
   color: #666666;
 }
 
+/* Global nav */
+
+.global-nav-list {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.global-nav-item {
+  display: block;
+  float: left;
+  padding: 1rem;
+  position: relative;
+  text-decoration: none;
+  transition-duration: 0.5s;
+}
+
+.global-nav-item a {
+  color: #666;
+  text-decoration: none;
+}
+
+.global-nav-item:hover,
+.global-nav-item:focus-within {
+  background: #cacaca;
+  cursor: pointer;
+}
+
+.global-nav-item:focus-within a {
+  outline: none;
+}
+
+.global-nav-list li ul {
+  visibility: hidden;
+  opacity: 0;
+  min-width: 8rem;
+  position: absolute;
+  transition: all 0.5s ease;
+  margin: 1rem 0 0;
+  padding: 0;
+  left: 0;
+  display: none;
+}
+
+.global-nav-list li:hover > ul,
+.global-nav-list li:focus-within > ul,
+.global-nav-list li ul:hover,
+.global-nav-list li ul:focus {
+   visibility: visible;
+   opacity: 1;
+   display: block;
+}
+
+.global-nav-list li ul li {
+  clear: both;
+  float: none;
+  width: 100%;
+}
+
 .shopify-section {
   margin-bottom: 3rem;
 }
