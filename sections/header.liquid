@@ -1,0 +1,114 @@
+
+
+<header class="global-header">
+
+  <nav class="global-nav">
+
+    <ul class="global-nav-list">
+
+{% for link in linklists[section.settings.main-linklist].links %}<!-- outer loop -->
+
+  {% assign child_list_handle = link.title | handleize %}
+
+  {% if linklists[child_list_handle].links != blank %}
+
+    <li class="global-nav-has-children">
+
+      <ul class="global-nav-sub">
+
+        {% for childlink in linklists[child_list_handle].links %}
+
+          <li class="global-nav-item">
+            <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+          </li>
+
+        {% endfor %}
+
+        </ul><!-- / .global-nav-sub -->
+
+      </li><!-- / .global-nav-has-children -->
+
+  {% else %}
+
+      <li class="global-nav-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
+
+  {% endif %}
+
+{% endfor %}<!-- / outer loop -->
+
+    </ul><!-- / .global-nav-list -->
+
+  </nav><!-- / global-nav -->
+
+<a href="/cart">cart</a>
+
+{% if shop.customer_accounts_enabled %}
+
+  {% if customer %}
+
+    <a href="/account">account</a>
+
+    {{ 'log out'  | customer_logout_link }}
+
+  {% else %}
+
+    {{ 'log in ' | customer_login_link }}
+
+    {{ 'register' | customer_register_link }}
+
+  {% endif %}
+  
+{% endif %}
+
+</header><!-- / .global-header -->
+
+{% schema %}
+
+{
+  "name" : "Header",
+  "settings" : [
+    {
+      "type" : "image_picker",
+      "id" : "logo",
+      "label" : "Logo Image"
+    },
+    {
+      "type" : "radio",
+      "id" : "logo-alignment",
+      "label" : "Logo Alignment",
+      "default" : "left",
+      "options" : [
+        {
+          "value" : "left",
+          "label" : "Left"
+        },
+        {
+          "value" : "right",
+          "label" : "Right"
+        },
+        {
+          "value" : "center",
+          "label" : "Center"
+        }
+      ]
+    },
+    {
+      "type" : "range",
+      "id" : "logo-width",
+      "label" : "Logo Width",
+      "min" : 120,
+      "max" : 250,
+      "steps" : 5,
+      "unit" : "px",
+      "default" : 160
+    },
+    {
+      "type" : "link_list",
+      "id" : "main-linklist",
+      "label" : "Menu",
+      "default" : "main-menu"
+    }
+  ]
+}
+
+{% endschema %}
