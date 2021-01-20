@@ -1,0 +1,71 @@
+
+{%- assign product = all_products[section.settings.selected-product] -%}
+
+
+<div class="featured-product-wrap flex-columns">
+
+  <div class="flex-column flex-column-half">
+
+    <img src="{{ product.featured_image | img_url: '500x500' }}" alt="{{ product.title }}" />
+
+  </div><!-- / .flex-column-half -->
+
+  <div class="flex-column flex-column-half">
+
+    <div class="featured-product-copy">
+
+      <h2>{{ section.settings.product-heading }}</h2>
+
+      {{ section.settings.product-copy }}
+
+      <a class="btn hero-button" href="{{ product.url }}">{{ section.settings.product-button-copy }}</a>
+
+    </div><!-- / .featured-product-copy -->
+
+  </div><!-- / .flex-column-half -->
+
+
+</div><!-- / .featured-product-wrap -->
+
+
+
+{% schema %}
+
+  {
+    "name" : "Featured Product",
+    "class" : "featured-product",
+    "tag" : "section",
+    "settings" : [
+      {
+        "id" : "selected-product",
+        "type" : "product",
+        "label" : "Select a Product to Feature"
+      },
+      {
+        "id" : "product-heading",
+        "type" : "text",
+        "label" : "Product Heading",
+        "default" : "<p>Lorem ipsum dolor sit amet.</p>"
+      },
+      {
+        "id" : "product-copy",
+        "type" : "richtext",
+        "label" : "Product Copy",
+        "default" : "<p>Lorem ipsum dolor sit amet.</p>"
+      },
+      {
+        "id" : "product-button-copy",
+        "type" : "text",
+        "label" : "Button Copy",
+        "default" : "Learn More"
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Featured Product",
+        "category" : "product"
+      }
+    ]
+  }
+
+{% endschema %}
