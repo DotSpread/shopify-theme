@@ -59,3 +59,13 @@ li.grid-item img {
 .grid__item-info {
   padding: 1rem;
 }
+
+.flex-columns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-column-half {
+  flex: 0 1 50%;
+}
