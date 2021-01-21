@@ -9,35 +9,7 @@
 
   {% for product in collection.products limit: section.settings.collection-product-count %}
 
-    {%- assign url = product.url -%}
-
-    {%- assign title = product.title -%}
-
-    {%- assign price = product.price -%}
-
-    {%- assign money_price = price | money -%}
-
-    {%- assign available = product.available -%}
-
-    <li class="grid-item">
-
-      <a class="grid__item-image-link" href="{{ url }}">
-        <img src="{{ product.featured_image | img_url: '360x' }}" alt="{{ title }}" />
-      </a>
-
-      <div class="grid__item-info">
-
-        <h3 class="grid__item-title"><a class="grid__item-text-link" href="{{ url }}">{{ title }}</a></h3>
-
-      {% if available %}
-        <p class="grid__item-regular-price">{{ money_price }}</p>
-      {% else %}
-        <p class="grid__item-sold-out">Sold out</p>
-      {% endif %}
-
-      </div><!-- / .grid__item-info -->
-
-    </li><!-- / .grid-item -->
+  {% include 'product-card' %}
 
   {% endfor %}
 

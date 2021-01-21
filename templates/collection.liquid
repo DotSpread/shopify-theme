@@ -1,22 +1,14 @@
 {% paginate collection.products by 10 %}
 
-  <h1>{{ collection.title }} collection.liquid</h1>
+  <div class="collection-grid-wrap">
+
+    <h2 class="collection-grid-heading">{{ collection.title }}</h2>
+
+    <ul class="grid collection-grid">
 
   {% for product in collection.products %}
 
-    <div class="single-list-product">
-
-      <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-
-      {{ product.price | money }}
-
-      {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
-
-      <a href="{{ product.url | within: collection }}">
-        <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
-      </a>
-
-    </div><!-- / .single-list-product -->
+    {% include 'product-card' %}
 
   {% else %}
 
@@ -24,10 +16,14 @@
 
   {% endfor %}
 
+    </ul><!-- / .collection-grid -->
+
+  </div><!-- / .collection-grid-wrap -->
+
   {% if paginate.pages > 1 %}
 
     {{ paginate | default_pagination }}
 
   {% endif %}
-  
+
 {% endpaginate %}
