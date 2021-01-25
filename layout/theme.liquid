@@ -6,9 +6,31 @@
   <meta name="description" content="{{ page_description | escape }}">
   <link rel="canonical" href="{{ canonical_url }}">
   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+  <style>
+
+    {{ settings.heading-font | font_face: font_display: 'swap' }}
+
+    {{ settings.body-font | font_face: font_display: 'swap' }}
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: {{ settings.heading-font.family }}, serif;
+      color: {{ settings.heading-color }};
+    }
+
+    body {
+      font-family: {{ settings.body-font.family }}, sans-serif;
+      color: {{ settings.body-color }};
+    }
+
+
+  </style>
+
   {{ content_for_header }} <!-- Header hook for plugins -->
+
   {{ 'application.css.scss' | asset_url | stylesheet_tag }}
   {{ 'application.js' | asset_url | script_tag }}
+
 </head>
 <body>
 
